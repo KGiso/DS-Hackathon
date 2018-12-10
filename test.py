@@ -26,9 +26,9 @@ def fast_transaction(data_sets):
 
         if prev_data_set.features[2] == sorted_data_sets[i].features[2]
         & prev_data_set[i].features[1] == sorted_data_sets[i].features[1]:
-            sorted_data_sets[i].fraud=True
+            sorted_data_sets[i].fraud="fast_trans"
         else:
-            sorted_data_sets[i].fraud=False
+            sorted_data_sets[i].fraud="none"
         prev_data_set=sorted_data_sets[i]
 
     return sorted_data_sets;
@@ -38,7 +38,7 @@ def fast_transaction(data_sets):
 def over_limit_transaction(data_sets):
     for i in range(0,len(data_sets)):
         if data_sets[i].features[14]<data_sets[i].features[9]:
-            data_sets[i].fraud=True
+            data_sets[i].fraud="ovr_lim_trans"
         else:
-            data_sets[i].fraud=False
+            data_sets[i].fraud="none"
     return data_sets
