@@ -60,6 +60,8 @@ def probing_transaction(data_sets):
             isIncrementing(customer_trans)
 
             #clean array and initialise with customer var
+            customer_trans=[]
+            customer_trans.append(sorted_data_sets[i])
         prev_customer=customer
         for i in range(20):
             print(sorted_data_sets[i])
@@ -79,3 +81,11 @@ def is_incrementing(customer_trans):
             for j in range(0,count):
                 if customer_trans[i-j].fraud!="inc":
                     customer_trans[i-j].fraud="inc"
+
+
+def polling_fraud_flags(k, data_sets):
+    poll=[0,0,0,0]
+    for i in range(len(data_sets)):
+        if data_sets[i].fraud != "none":
+            poll[data_sets[i].cluster]=poll[data_sets[i].cluster]+1
+    return poll
